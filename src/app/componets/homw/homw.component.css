@@ -1,4 +1,43 @@
 *{
-    color: white;
-    background-color: black;
+    color: black;
+    font-family: monospace;
+}
+a{
+    text-decoration: none;
+    font-weight: bolder;
+}
+.header{
+    padding: 3vh 0vh;
+    /* background-color: black; */
+}
+.profile{
+    background-image: url("src\assets\Iconic-Entrepreneur-Vector-2.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+}
+.title-header{
+    padding: 2vh;
+    font-weight: bolder;
+    color: rgb(45, 80, 80);
+    font-family: monospace;
+}
+.heading{
+    font-weight: 900;
+    font-size: xxx-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.heading-description{
+}
+.counters{
+    margin: 4vh 0vh;
+    font-weight: bolder;
+    font-size: 5vh;
+}
+.sign-in:hover .arrow-left  {
+   padding-left: 1vh;
+
+}
+.arrow-left{
+    transition: .5s ease-in-out;
 }
