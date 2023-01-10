@@ -7,7 +7,8 @@ import { RegistrationComponent } from './componets/registration/registration.com
 import { LoginComponent } from './componets/login/login.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomwComponent } from './componets/homw/homw.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [

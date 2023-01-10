@@ -15,8 +15,13 @@ export class RegistrationComponent implements OnInit {
     
    }
   onsubmit(){
-    this.api.register(this.registerForm.value);
-    this.router.navigate(["/login"]);
+    this.api.register(this.registerForm.value).subscribe(res=>{
+      console.log(res);
+      this.router.navigate(["login"]);
+    },
+    error=>{
+      console.log(error)
+    })
   }
 
   ngOnInit(): void {
@@ -25,7 +30,7 @@ export class RegistrationComponent implements OnInit {
       lastName: new FormControl(''),
       email:new FormControl(''),
       phoneNumber:new FormControl(''),
-      jobCategory:new FormControl(''),
+      jobTitle:new FormControl(''),
       password:new FormControl('')
     });
   }

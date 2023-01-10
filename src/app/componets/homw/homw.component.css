@@ -9,13 +9,9 @@ a{
 .header{
     padding: 3vh 0vh;
     /* background-color: black; */
+   
 }
-.profile{
-    background-image: url("src\assets\Iconic-Entrepreneur-Vector-2.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 50vh;
-}
+
 .title-header{
     padding: 2vh;
     font-weight: bolder;
@@ -24,15 +20,8 @@ a{
 }
 .heading{
     font-weight: 900;
-    font-size: xxx-large;
+    font-size: 10vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.heading-description{
-}
-.counters{
-    margin: 4vh 0vh;
-    font-weight: bolder;
-    font-size: 5vh;
 }
 .sign-in:hover .arrow-left  {
    padding-left: 1vh;
@@ -40,4 +29,31 @@ a{
 }
 .arrow-left{
     transition: .5s ease-in-out;
+}
+.card-image{
+   text-align: center;
+   margin: 1vh 0 ;
+}
+.card-title{
+ 
+}
+.about-image{
+    background-image: url("src\assets\3785210.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.course-heading{
+    text-align: center;
+}
+.home-image{
+    background-image: url("src\assets\14245130_MyApril8.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.card:hover{
+    box-shadow:0px 5px 5px #3330302b;
+position: relative;
+bottom: 2vh;
+
 }
