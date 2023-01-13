@@ -8,6 +8,7 @@ import { LoginComponent } from './componets/login/login.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomwComponent } from './componets/homw/homw.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ProfileComponent } from './componets/profile/profile.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    HomwComponent
+    HomwComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

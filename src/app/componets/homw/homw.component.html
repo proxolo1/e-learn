@@ -17,14 +17,14 @@
                     <div class="col-2 offset-md-1">
                         <div class="row">
                             <div class="col"><a href="register"><img src="https://img.icons8.com/fluency-systems-filled/25/null/user.png"/></a></div>
-                            <div class="col"><i class="fa-regular fa-heart"></i></div>
+                            <div class="col"><i class="fa-solid fa-user"></i></div>
                             <div class="col"><a href="login"><i class="fa-regular fa-user"></i></a></div>
                             <div class="col"><i class="fa-thin fa-user"></i></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div class="col"></div>
+                            <div class="col"></div>                                                                                                     
                         </div>
                     </div>
                 </div>
@@ -157,52 +157,38 @@
             <span class="course-heading ">POPULAR COURSES</span>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-md-4" *ngFor="let course of courses">
 
                 <div class="card">
                     <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">{{course.name}}</h5>
+                        <p class="card-text">{{course.description}}</p>
+                        <button class="btn btn-sm btn-info">enroll</button>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                        <small class="text-muted">{{course.no_of_registrations}}</small>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                </div>
-            </div>
+           
         </div>
         <div class="row my-5">
             <span class="testimonial fs-5 text-end text-primary">TESTIMONIAL</span>
         </div>
         <div class="row">
             <span class="text-center fs-1">Our Students Say !</span>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mt-5" *ngFor="let comments of fakeComments.comments">
+                <div class="card">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <span class="card-title fw-bold">{{comments.user.username}}</span>
+                      <p class="card-text">{{comments.body}}</p>
+                    </div>
+                  </div>
+            </div>
         </div>
     </section>
 </div>
