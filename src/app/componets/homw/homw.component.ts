@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class HomwComponent implements OnInit {
   fakeComments:any|null
   avatar:any|null
+  dark:boolean=false;
   constructor(private api: ApiService) { }
   courses: any | null;
   ngOnInit(): void {
@@ -23,5 +24,18 @@ export class HomwComponent implements OnInit {
       this.fakeComments=data;
     })
   }
+  darkModeToggle(){
+    let background=<HTMLDivElement>document.querySelector(".background");
+    let main=<HTMLDivElement>document.querySelector(".main");
+    if(!this.dark){
+      background.style.backgroundColor="black";
+      main.style.color="red";
+    }
+    else{
+      background.style.backgroundColor="white";
+      main.style.color="black";
+    }
+    this.dark=!this.dark;
 
+  }
 }
