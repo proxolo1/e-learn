@@ -10,6 +10,6 @@ export class AuthService {
     localStorage.clear();
   }
   isLoggedIn(){
-    return !localStorage.getItem("user")
+    return localStorage.getItem("user")
   }
 }

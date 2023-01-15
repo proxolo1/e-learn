@@ -10,10 +10,23 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AdminComponent implements OnInit {
   courseForm!:FormGroup;
-  constructor(private api:ApiService) { }
+  access:any;
+  updateTemp:any;
+  constructor(private api:ApiService) { 
+   JSON.parse(localStorage.getItem("user")||"").user.roles.forEach((role: { name: any; })=>{
+    console.log(role.name)
+    if(role.name=="ROLE_USER"){
+      this.access=false;
+    }
+    else{
+      this.access=true;
+    }
+   })
+  }
   courses:any;
   ngOnInit(): void {
-    this.api.getAllCourse().subscribe(res=>{
+    if(this.access){
+      this.api.getAllCourse().subscribe(res=>{
       console.log(res)
       this.courses=res;
     })
@@ -23,6 +36,12 @@ export class AdminComponent implements OnInit {
       trainer:new FormControl(""),
       duration:new FormControl("")
     })
+    }
+    else{
+      alert("access denied");
+      let main=<HTMLDivElement>document.querySelector(".main")
+      main.innerHTML="<code>ACCESS DENIED<code><br><a href=''>home</a>"
+    }
   }
   addCourse(){
     this.api.addCourse(this.courseForm.value).subscribe(res=>{
@@ -31,7 +50,19 @@ export class AdminComponent implements OnInit {
     })
   }
   updateCourse(courseName:string){
-
+    this.api.viewCourse(courseName).subscribe(res=>{
+      this.updateTemp=res;
+     let update=<HTMLDivElement>document.querySelector(".update");
+     let name=<HTMLInputElement>document.getElementById("name");
+     let description=<HTMLInputElement>document.getElementById("description")
+     let duration=<HTMLInputElement>document.getElementById("duration")
+     let trainer=<HTMLInputElement>document.getElementById("trainer");
+     update.style.display="block";
+     name.value=this.updateTemp.name;
+     description.value=this.updateTemp.description;
+     trainer.value=this.updateTemp.trainer;
+     duration.value=this.updateTemp.duration;
+    })
   }
   viewCourse(courseName:string){
     this.api.viewCourse(courseName).subscribe(res=>{
@@ -46,6 +77,18 @@ export class AdminComponent implements OnInit {
     this.api.deleteCourse(courseName).subscribe(res=>{
       console.log(res)
       window.location.reload();
+    })
+  }
+  saveUpdate(){
+    let update=<HTMLDivElement>document.querySelector(".update");
+    let name=<HTMLInputElement>document.getElementById("name");
+    let description=<HTMLInputElement>document.getElementById("description")
+    let duration=<HTMLInputElement>document.getElementById("duration")
+    let trainer=<HTMLInputElement>document.getElementById("trainer");
+    this.api.updateCourse(name.value,{name:name.value,description:description.value,duration:duration.value,trainer:trainer.value}).subscribe(res=>{
+      console.log(res)
+      alert("updated successfully")
+      update.style.display="none";
     })
   }
 }

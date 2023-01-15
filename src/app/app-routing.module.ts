@@ -11,8 +11,8 @@ const routes: Routes = [
   {
     path: "register", component: RegistrationComponent
   },
-  { path: "", component: HomwComponent ,canActivate:[AuthGuard]},
-  { path: "login", component: LoginComponent,canActivate:[AuthGuard] },
+  { path: "", component: HomwComponent},
+  { path: "login", component: LoginComponent },
   { path: "admin", component: AdminComponent,canActivate:[AuthGuard] },
   {path:"profile",component:ProfileComponent,canActivate:[AuthGuard]}
 ];

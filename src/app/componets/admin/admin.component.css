@@ -1,0 +1,10 @@
+.update{
+    background-color: black;
+    padding: 2vh;
+    color: white;
+    position: absolute;
+    top: 4vh;
+    /* left: 10vh; */
+    width: 100%;
+    display: none;
+}
