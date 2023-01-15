@@ -32,7 +32,7 @@ export class ApiService {
 
   }
   updateCourse(courseName:string,course:any){
-    return this.http.put(`${this.url}/api/` ,course)
+    return this.http.put(`${this.url}/api/update-course`,course,{headers:{"Authorization":`Bearer ${this.token.getToken()}`}})
   }
   deleteCourse(courseName:string){
     return this.http.delete(`${this.url}/api/delete-course?course-name=${courseName}`,{headers:{"Authorization":`Bearer ${this.token.getToken()}`}})

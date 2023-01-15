@@ -9,4 +9,7 @@ export class AuthService {
   logout(){
     localStorage.clear();
   }
+  isLoggedIn(){
+    return !localStorage.getItem("user")
+  }
 }

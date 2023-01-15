@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
@@ -35,12 +36,16 @@ export class AdminComponent implements OnInit {
   viewCourse(courseName:string){
     this.api.viewCourse(courseName).subscribe(res=>{
       console.log(res)
+     let myWindow= window.open('',
+                    '_blank',
+                    'width=400,height=400 top=200,left=600');
+                   myWindow?.document.write(JSON.stringify(res))
     })
   }
   deleteCourse(courseName:string){
     this.api.deleteCourse(courseName).subscribe(res=>{
       console.log(res)
-      location.reload();
+      window.location.reload();
     })
   }
 }
