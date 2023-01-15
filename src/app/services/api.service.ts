@@ -21,4 +21,20 @@ export class ApiService {
   dummyReviews(){
     return this.http.get("https://dummyjson.com/comments");
   }
+  addCourse(course:any){
+    return this.http.post(`${this.url}/api/add-course`,course,{headers:{"Authorization":`Bearer ${this.token.getToken()}`}})
+  }
+  enrollCourse(email:string,courseName:string){
+    return this.http.get(`${this.url}/api/enroll-course?email=${email}&course=${courseName}`,{headers:{"Authorization":`Bearer ${this.token.getToken()}`}})
+  }
+  viewCourse(courseName:string){
+    return this.http.get(`${this.url}/api/get-course?course-name=${courseName}`,{headers:{"Authorization":`Bearer ${this.token.getToken()}`}})
+
+  }
+  updateCourse(courseName:string,course:any){
+    return this.http.put(`${this.url}/api/` ,course)
+  }
+  deleteCourse(courseName:string){
+    return this.http.delete(`${this.url}/api/delete-course?course-name=${courseName}`,{headers:{"Authorization":`Bearer ${this.token.getToken()}`}})
+  }
 }

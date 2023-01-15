@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-body">
+      <h1 class="card-title text-primary text-center">{{profile.user.firstName}} {{profile.user.lastName}}</h1>
+      <ul>
+          <li>{{profile.user.jobTitle}}</li>
+          <li>{{profile.user.phoneNumber}}</li>
+          <li *ngFor="let role of profile.user.roles">{{role.name}}</li>
+      </ul>
+      <a href="" class="btn btn-primary">Go home</a>
+    </div>
+  </div>

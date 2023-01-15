@@ -9,30 +9,37 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
+  register:any|null;
   registerForm!:FormGroup;
   constructor(private api:ApiService,private router:Router) {
     
    }
   onsubmit(){
+    
+    console.log(this.registerForm.get('password'))
     this.api.register(this.registerForm.value).subscribe(res=>{
-      console.log(res);
-      this.router.navigate(["login"]);
-    },
-    error=>{
-      console.log(error)
+      this.register=res;
+      if(this.register.access){
+          this.router.navigate(["login"]);
+
+      }
+      else{
+        alert(this.register.successMessage)
+      }
+    
     })
   }
 
   ngOnInit(): void {
     this.registerForm= new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email:new FormControl(''),
-      phoneNumber:new FormControl(''),
-      jobTitle:new FormControl(''),
-      password:new FormControl('')
+      firstName: new FormControl('',[Validators.required]),
+      lastName: new FormControl('',[Validators.required]),
+      email:new FormControl('',[Validators.required,Validators.email]),
+      phoneNumber:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+      jobTitle:new FormControl('',[Validators.required]),
+      password:new FormControl('',[Validators.required]),
+      confirmPassword: new FormControl('', Validators.required)
     });
   }
-
+ 
 }

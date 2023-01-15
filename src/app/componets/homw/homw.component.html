@@ -1,48 +1,95 @@
 <div class="container-fluid background">
-    <div class="container main">
+  <div class="container main">
     <section class="vh-100 intro">
-
-        <div class="container-fluid header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-2 title">
-                        PROXOLO
-                    </div>
-                    <div class="col-6 offset-md-1">
-                        <div class="row">
-                            <div class="col"><span><a href="#courses">Courses</a></span></div>
-                            <div class="col"><span><a href="">reviews</a></span></div>
-                            <div class="col"><span><a href="#about-us">about us</a></span></div>
-                        </div>
-                    </div>
-                    <div class="col-2 offset-md-1">
-                        <div class="row">
-                            <div class="col"><a href="profile"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="feather feather-user">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg></a></div>
-                            <!-- <div class="col"></div> -->
-                            <div class="col"><a href="login"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="feather feather-log-in">
-                                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-                                        <polyline points="10 17 15 12 10 7"></polyline>
-                                        <line x1="15" y1="12" x2="3" y2="12"></line>
-                                    </svg></a></div>
-                            <div class="col">
-                                <input type="checkbox" id="darkmode-toggle" />
-                                <label for="darkmode-toggle" (click)="darkModeToggle()">
-
-                                    <!-- <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+      <div class="container-fluid header">
+        <div class="container">
+          <div class="row">
+            <div class="col-2 title">PROXOLO</div>
+            <div class="col-6 offset-md-1">
+              <div class="row">
+                <div class="col">
+                  <span><a href="#courses">Courses</a></span>
+                </div>
+                <div class="col">
+                  <span><a href="">reviews</a></span>
+                </div>
+                <div class="col">
+                  <span><a href="#about-us">about us</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 offset-md-1">
+              <div class="row">
+                <div class="col">
+                  <a href="profile"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-user"
+                    >
+                      <path
+                        d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                      ></path>
+                      <circle cx="12" cy="7" r="4"></circle></svg
+                  ></a>
+                </div>
+                <!-- <div class="col"></div> -->
+                <div *ngIf="!isLogin" class="col" title="login">
+                  <a href="login"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-log-in"
+                    >
+                      <path
+                        d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"
+                      ></path>
+                      <polyline points="10 17 15 12 10 7"></polyline>
+                      <line x1="15" y1="12" x2="3" y2="12"></line></svg
+                  ></a>
+                </div>
+                <div *ngIf="isLogin" class="col" title="logout">
+                  <svg
+                    (click)="logOut()"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-log-out"
+                  >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg>
+                </div>
+                <div class="col">
+                  <input type="checkbox" id="darkmode-toggle" />
+                  <label for="darkmode-toggle" (click)="darkModeToggle()">
+                    <!-- <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="22"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon">
                                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                                    </svg>
-                                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    </svg> -->
+                    <!-- <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun">
                                         <circle cx="12" cy="12" r="5"></circle>
@@ -55,178 +102,190 @@
                                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                                     </svg> -->
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="row">
-                            <div class="col"></div>
-                        </div>
-                    </div>
+                  </label>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-8">
-                <div class="row">
-                    <span class="title-header text-primary py-5">BEST ONLINE COURSES</span>
-                </div>
-                <div class="row">
-                    <span class="heading">
-                        Learning and teaching online,
-                        made easy.
-                    </span>
-                    <p class="heading-description fw-light">
-                        Gain subject certification with proxolo
-                    </p>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <a class="sign-in" href="login ">sign in <span class="arrow-left">&#8594;</span></a>
-                    </div>
-                </div>
-
-
+            <div class="col">
+              <div class="row">
+                <div class="col"></div>
+              </div>
             </div>
-            <div class="col-4 home-image"></div>
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <div class="row">
+            <span class="title-header text-primary py-5"
+              >BEST ONLINE COURSES</span
+            >
+          </div>
+          <div class="row">
+            <span class="heading">
+              Learning and teaching online, made easy.
+            </span>
+            <p class="heading-description fw-light">
+              Gain subject certification with proxolo
+            </p>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="sign-in" href="login "
+                >sign in <span class="arrow-left">&#8594;</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4 home-image"></div>
+      </div>
     </section>
     <section class="courses-cards">
-        <div class="row">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://img.icons8.com/nolan/64/graduation-cap.png" />
+            </div>
+            <div class="card-body">
+              <b class="card-title"> INSTRUCTOR </b>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Sapiente, ex?
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://img.icons8.com/nolan/64/online.png" />
+            </div>
+            <div class="card-body">
+              <b class="card-title"> ONLINE CLASSES </b>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta,
+                quos.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-image">
+              <img
+                src="https://img.icons8.com/nolan/64/group-of-projects.png"
+              />
+            </div>
+            <div class="card-body">
+              <b class="card-title">GROUP PROJECTS</b>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consectetur, quas?
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://img.icons8.com/nolan/64/open-book.png" />
+            </div>
+            <div class="card-body">
+              <b class="card-title"> BOOK LIBRARY </b>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
+                doloremque.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row my-5" id="about-us">
+        <div class="col about-image"></div>
+        <div class="col offset-1">
+          <div class="row">
+            <span class="about-us text-primary"> ABOUT US </span>
+          </div>
+          <div class="row">
+            <span class="about-us-title fs-1"> Welcome to eLEARNING </span>
+          </div>
+          <div class="row">
+            <span class="about-description fw-light lh-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo,
+              ipsam!
+            </span>
+          </div>
+          <div class="row">
+            <span class="about-conclusion lh-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+              voluptas obcaecati consectetur vero voluptate iusto quia eveniet
+              temporibus quod quasi.
+            </span>
+          </div>
+          <div class="row my-4">
             <div class="col">
-                <div class="card">
-                    <div class="card-image">
-
-                        <img src="https://img.icons8.com/nolan/64/graduation-cap.png" />
-                    </div>
-                    <div class="card-body">
-                        <b class="card-title">
-                            INSTRUCTOR
-                        </b>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, ex?</p>
-                    </div>
-                </div>
+              <p><span class="arrow-left">&#8594;</span> Skilled instructor</p>
+              <p>
+                <span class="arrow-left">&#8594;</span> International
+                certificate
+              </p>
+              <p><span class="arrow-left">&#8594;</span> Online classes</p>
             </div>
             <div class="col">
-                <div class="card">
-                    <div class="card-image">
+              <p><span class="arrow-left">&#8594;</span> 2M happy users</p>
+              <p><span class="arrow-left">&#8594;</span> 1M courses</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                        <img src="https://img.icons8.com/nolan/64/online.png" />
-                    </div>
-                    <div class="card-body">
-                        <b class="card-title">
-                            ONLINE CLASSES
-                        </b>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, quos.</p>
-                    </div>
-                </div>
+      <div class="row my-5 fs-1" id="courses">
+        <p class="fs-5 text-primary">Courses</p>
+        <span class="course-heading">POPULAR COURSES</span>
+      </div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let course of courses">
+          <div class="card">
+            <img src="" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{{ course.name }}</h5>
+              <p class="card-text">{{ course.description }}</p>
+              <button
+                class="btn btn-sm btn-info"
+                (click)="enrollCourse(course.name)"
+              >
+                enroll
+              </button>
             </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://img.icons8.com/nolan/64/group-of-projects.png" />
-                    </div>
-                    <div class="card-body">
-                        <b class="card-title">GROUP PROJECTS</b>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quas?
-                        </p>
-                    </div>
-                </div>
+            <div class="card-footer">
+              <small class="text-muted">{{ course.no_of_registrations }}</small>
             </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://img.icons8.com/nolan/64/open-book.png" />
-                    </div>
-                    <div class="card-body">
-                        <b class="card-title">
-                            BOOK LIBRARY
-                        </b>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, doloremque.
-                        </p>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </div>
+      <div class="row my-5">
+        <span class="testimonial fs-5 text-end text-primary">TESTIMONIAL</span>
+      </div>
+      <div class="row">
+        <span class="text-center fs-1">Our Students Say !</span>
+      </div>
+      <div class="row">
+        <div
+          class="col-md-3 mt-5 d-flex align-items-stretch"
+          *ngFor="let comments of fakeComments.comments"
+        >
+          <div class="card">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+              <span class="card-title fw-bold text-info">{{
+                comments.user.username
+              }}</span>
+              <p class="card-text">{{ comments.body }}</p>
             </div>
+          </div>
         </div>
-        <div class="row my-5" id="about-us">
-            <div class="col about-image">
-
-            </div>
-            <div class="col offset-1">
-                <div class="row">
-                    <span class="about-us text-primary">
-                        ABOUT US
-                    </span>
-                </div>
-                <div class="row">
-                    <span class="about-us-title fs-1">
-                        Welcome to eLEARNING
-                    </span>
-                </div>
-                <div class="row">
-                    <span class="about-description fw-light lh-lg">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, ipsam!
-                    </span>
-                </div>
-                <div class="row">
-                    <span class="about-conclusion lh-lg">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi voluptas obcaecati consectetur
-                        vero voluptate iusto quia eveniet temporibus quod quasi.
-                    </span>
-                </div>
-                <div class="row my-4">
-                    <div class="col ">
-                        <p><span class="arrow-left">&#8594;</span> Skilled instructor </p>
-                        <p><span class="arrow-left">&#8594;</span> International certificate </p>
-                        <p><span class="arrow-left">&#8594;</span> Online classes </p>
-                    </div>
-                    <div class="col">
-                        <p><span class="arrow-left">&#8594;</span> 2M happy users </p>
-                        <p><span class="arrow-left">&#8594;</span> 1M courses</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row my-5 fs-1" id="courses">
-            <p class="fs-5 text-primary">Courses</p>
-            <span class="course-heading ">POPULAR COURSES</span>
-        </div>
-        <div class="row">
-            <div class="col-md-4" *ngFor="let course of courses">
-
-                <div class="card">
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{course.name}}</h5>
-                        <p class="card-text">{{course.description}}</p>
-                        <button class="btn btn-sm btn-info">enroll</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">{{course.no_of_registrations}}</small>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="row my-5">
-            <span class="testimonial fs-5 text-end text-primary">TESTIMONIAL</span>
-        </div>
-        <div class="row">
-            <span class="text-center fs-1">Our Students Say !</span>
-        </div>
-        <div class="row">
-            <div class="col-md-3 mt-5 d-flex align-items-stretch" *ngFor="let comments of fakeComments.comments">
-                <div class="card ">
-                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                    <div class="card-body">
-                        <span class="card-title fw-bold text-info">{{comments.user.username}}</span>
-                        <p class="card-text">{{comments.body}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
-</div>
+  </div>
 </div>

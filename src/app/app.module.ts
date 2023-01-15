@@ -9,6 +9,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomwComponent } from './componets/homw/homw.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ProfileComponent } from './componets/profile/profile.component';
+import { AdminComponent } from './componets/admin/admin.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProfileComponent } from './componets/profile/profile.component';
     RegistrationComponent,
     LoginComponent,
     HomwComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

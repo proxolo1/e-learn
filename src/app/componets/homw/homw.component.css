@@ -17,6 +17,7 @@ a{
    
 }
 .background{
+
     transition: 2s ease;
 }
 .title-header{
@@ -104,6 +105,9 @@ label {
   label:active:after{ 
     width: 3vh; 
   }
+  svg{
+    cursor: pointer;
+  }
   label svg {
     position: absolute;
     width: 20px;
@@ -115,8 +119,9 @@ label {
     fill:#fff;
     transition: 1s;
   }
+
   label svg.moon {
-    left:5vh;
+    left:10vh;
     fill:#7e7e7e;
     transition: 0.3s;
   }
