@@ -32,12 +32,14 @@ export class HomwComponent implements OnInit {
   darkModeToggle(){
     let background=<HTMLDivElement>document.querySelector(".background");
     let main=<HTMLDivElement>document.querySelector(".main");
+    let cards=document.querySelectorAll(".card")
     if(!this.dark){
       background.style.backgroundColor="black";
       main.style.color="red";
+    
     }
     else{
-      background.style.backgroundColor="white";
+      background.style.backgroundColor="beige";
       main.style.color="black";
     }
     this.dark=!this.dark;

@@ -10,11 +10,16 @@ export class ProfileComponent implements OnInit {
   profile:any;
   admin:boolean=false;
   courses:any;
-  user_course!:any[];
+  user_course!:any[]
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {
-    let arr: any[]=[]
+    let arr: any[]=[{
+      name:"NA",
+      description:"NA",
+      duration:"NA",
+      trainer:"NA"
+    }];
     this.profile=JSON.parse(localStorage.getItem("user")||'{}');
     console.log(this.profile)
    this.profile.user.roles.forEach((data: { name: string; })=>{
@@ -34,7 +39,6 @@ export class ProfileComponent implements OnInit {
       })
     }) 
     this.user_course=arr;
-    console.log(this.user_course)
   }
   
 }

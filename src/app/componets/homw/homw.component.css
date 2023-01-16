@@ -16,8 +16,11 @@ a{
     /* background-color: black; */
    
 }
+.card{
+  
+}
 .background{
-
+    background-color: beige;
     transition: 2s ease;
 }
 .title-header{

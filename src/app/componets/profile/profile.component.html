@@ -1,24 +1,29 @@
 <div class="container">
+  
   <div class="row">
     <div class="col">
-      <h1 class="card-title text-primary text-center name">
+      <h1 class="card-title text-primary text-center name m-5 flicker-4">
         {{ profile.user.firstName }} {{ profile.user.lastName }}
       </h1>
     </div>
   </div>
-  <div class="row">
-    <span class="email">{{ profile.user.email }}</span>
+  <div class="user-details row ">
+    <div class="col">
+      
+    </div>
+    <div class="row">
+   <p><span class="email">Email : </span>{{ profile.user.email }}</p>
   </div>
   <div class="row">
-    <span class="job-title">{{ profile.user.jobTitle }}</span>
+    <p><span class="job-title">Job title :</span> {{ profile.user.jobTitle }}</p>
   </div>
   <div class="row">
-    <span class="phone-number">{{ profile.user.phoneNumber }}</span>
+    <p><span class="phone-number">phone number : </span>{{ profile.user.phoneNumber }}</p>
   </div>
   <div class="row">
-    <span class="role" *ngFor="let role of profile.user.roles">
-      {{ role.name }}
-    </span>
+    <p *ngFor="let role of profile.user.roles"><span class="role" >
+      Role : </span>{{ role.name }}
+    </p>
   </div>
   <div class="row">
     <div class="col"><a href="" class="btn btn-primary">Go home</a></div>
@@ -31,6 +36,8 @@
       </button>
     </div>
   </div>
+  </div>
+  
 </div>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
