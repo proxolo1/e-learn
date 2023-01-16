@@ -8,3 +8,7 @@
     width: 100%;
     display: none;
 }
+.course-management{
+    font-size: 5vh !important;
+    margin-bottom: 5vh !important;
+}

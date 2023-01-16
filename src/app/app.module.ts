@@ -11,7 +11,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { ProfileComponent } from './componets/profile/profile.component';
 import { AdminComponent } from './componets/admin/admin.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +25,7 @@ import { AdminComponent } from './componets/admin/admin.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

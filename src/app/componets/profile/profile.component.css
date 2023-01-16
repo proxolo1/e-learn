@@ -1,0 +1,10 @@
+.name{
+    font-size: 10vh;
+    text-transform: uppercase;
+    font-family: emoji;
+    color: #c60000;
+    font-family: 'Orbitron', sans-serif;
+    /* background: -webkit-linear-gradient(#ff0000, #ff0000); */
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: #6b3b3b00; */
+}

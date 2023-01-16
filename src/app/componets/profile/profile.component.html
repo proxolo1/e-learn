@@ -1,11 +1,73 @@
-<div class="card">
-    <div class="card-body">
-      <h1 class="card-title text-primary text-center">{{profile.user.firstName}} {{profile.user.lastName}}</h1>
-      <ul>
-          <li>{{profile.user.jobTitle}}</li>
-          <li>{{profile.user.phoneNumber}}</li>
-          <li *ngFor="let role of profile.user.roles">{{role.name}}</li>
-      </ul>
-      <a href="" class="btn btn-primary">Go home</a>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="card-title text-primary text-center name">
+        {{ profile.user.firstName }} {{ profile.user.lastName }}
+      </h1>
     </div>
   </div>
+  <div class="row">
+    <span class="email">{{ profile.user.email }}</span>
+  </div>
+  <div class="row">
+    <span class="job-title">{{ profile.user.jobTitle }}</span>
+  </div>
+  <div class="row">
+    <span class="phone-number">{{ profile.user.phoneNumber }}</span>
+  </div>
+  <div class="row">
+    <span class="role" *ngFor="let role of profile.user.roles">
+      {{ role.name }}
+    </span>
+  </div>
+  <div class="row">
+    <div class="col"><a href="" class="btn btn-primary">Go home</a></div>
+    <div class="col">
+      <a *ngIf="admin" href="/admin" class="btn btn-info">Admin page</a>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        view courses
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          {{ profile.user.firstName }} enrolled courses
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">course name</th>
+              <th scope="col">course description</th>
+              <th scope="col">duration</th>
+              <th scope="col">trainer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of user_course">
+              <th>{{ course.name }}</th>
+              <td>{{ course.description }}</td>
+              <td>{{ course.duration }}</td>
+              <td>{{ course.trainer }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

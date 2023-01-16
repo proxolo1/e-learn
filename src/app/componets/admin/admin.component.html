@@ -1,61 +1,66 @@
 <div class="container main">
   <div class="row">
-    <p>Course management</p>
+    <h1 class="fs-5 text-secondary text-center course-management" >Course management</h1 >
+  </div>
+  
+  <div class="row">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">course name</th>
+          <th scope="col">description</th>
+          <th scope="col">duration</th>
+          <th scope="col">trainer</th>
+          <th scope="col">action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses">
+          <td>{{ course.name }}</td>
+          <td>{{ course.description }}</td>
+          <td>{{ course.duration }}</td>
+          <td>{{ course.trainer }}</td>
+          <td>
+            <span  data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn" (click)="viewCourse(course.name)">view</span>
+            <span data-bs-toggle="modal" data-bs-target="#exampleModal1"  class="btn" (click)="updateCourse(course.name)">edit</span><span class="btn"
+              (click)="deleteCourse(course.name)">delete</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="row">
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       add course
     </button>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">course name</th>
-        <th scope="col">description</th>
-        <th scope="col">duration</th>
-        <th scope="col">trainer</th>
-        <th scope="col">action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let course of courses">
-        <td>{{ course.name }}</td>
-        <td>{{ course.description }}</td>
-        <td>{{ course.duration }}</td>
-        <td>{{ course.trainer }}</td>
-        <td>
-          <span class="btn" (click)="viewCourse(course.name)">view</span>
-          <span class="btn" (click)="updateCourse(course.name)">edit</span><span class="btn"
-            (click)="deleteCourse(course.name)">delete</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row text-end my-5">
+    <a href="">home &#8594;</a>
+  </div>
 </div>
 
 <!-- Button trigger modal -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add course</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="courseForm">
-          <input type="text" placeholder="course name" formControlName="name" />
-          <input type="text" placeholder="course description" formControlName="description" />
-          <input type="text" placeholder="course duration" formControlName="duration" />
-          <input type="text" name="" id="" placeholder="trainer" formControlName="trainer" />
+          <input class="form-control m-3" type="text" placeholder="course name" formControlName="name" />
+          <input class="form-control m-3" type="text" placeholder="course description" formControlName="description" />
+          <input class="form-control m-3" type="text" placeholder="course duration" formControlName="duration" />
+          <input class="form-control m-3" type="text" name="" id="" placeholder="trainer" formControlName="trainer" />
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary" (click)="addCourse()">
+      
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addCourse()">
           Save changes
         </button>
       </div>
@@ -92,7 +97,43 @@
   </div>
 </div>
 
-
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row my-3">
+          <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course name </label></div>
+          <div class="col-10"><input type="text" class="form-control" id="name"></div>
+        </div>
+        <div class="row my-3">
+          <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course description </label></div>
+          <div class="col-10"><input type="text" class="form-control" id="description"></div>
+        </div>
+        <div class="row my-3">
+          <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course duration </label></div>
+          <div class="col-10"><input type="text" class="form-control" id="duration"></div>
+        </div>
+        <div class="row my-3">
+          <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course trainer </label></div>
+          <div class="col-10"><input type="text" class="form-control" id="trainer"></div>
+        </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="saveUpdate()">
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="update">
   <div class="row my-3">
     <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course name </label></div>
@@ -111,10 +152,55 @@
     <div class="col-10"><input type="text" class="form-control" id="trainer"></div>
   </div>
   <div class="row my-3">
-    <button (click)="saveUpdate()">save</button>
+    <button class="btn btn-info" (click)="saveUpdate()">save</button>
   </div>
   
 
   <!-- <input type="text"> -->
   <!-- <input type="text"> -->
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">users</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#id</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">job Title</th>
+              <th scope="col">phone Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{user.id}}</td>
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.jobTitle}}</td>
+              <td>{{user.phoneNumber}}</td>
+            </tr>
+         
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

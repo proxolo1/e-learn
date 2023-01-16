@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   courseForm!:FormGroup;
   access:any;
   updateTemp:any;
+  users:any;
   constructor(private api:ApiService) { 
    JSON.parse(localStorage.getItem("user")||"").user.roles.forEach((role: { name: any; })=>{
     console.log(role.name)
@@ -46,6 +47,7 @@ export class AdminComponent implements OnInit {
   addCourse(){
     this.api.addCourse(this.courseForm.value).subscribe(res=>{
       console.log(res);
+      
       location.reload();
     })
   }
@@ -57,7 +59,7 @@ export class AdminComponent implements OnInit {
      let description=<HTMLInputElement>document.getElementById("description")
      let duration=<HTMLInputElement>document.getElementById("duration")
      let trainer=<HTMLInputElement>document.getElementById("trainer");
-     update.style.display="block";
+    //  update.style.display="block";
      name.value=this.updateTemp.name;
      description.value=this.updateTemp.description;
      trainer.value=this.updateTemp.trainer;
@@ -66,11 +68,12 @@ export class AdminComponent implements OnInit {
   }
   viewCourse(courseName:string){
     this.api.viewCourse(courseName).subscribe(res=>{
-      console.log(res)
-     let myWindow= window.open('',
-                    '_blank',
-                    'width=400,height=400 top=200,left=600');
-                   myWindow?.document.write(JSON.stringify(res))
+      console.log(res);
+      this.usersFn(res);
+    //  let myWindow= window.open('',
+    //                 '_blank',
+    //                 'width=400,height=400 top=200,left=600');
+    //                myWindow?.document.write(JSON.stringify(res))
     })
   }
   deleteCourse(courseName:string){
@@ -88,7 +91,19 @@ export class AdminComponent implements OnInit {
     this.api.updateCourse(name.value,{name:name.value,description:description.value,duration:duration.value,trainer:trainer.value}).subscribe(res=>{
       console.log(res)
       alert("updated successfully")
-      update.style.display="none";
+      location.reload();
     })
+  }
+  usersFn(user:any){
+    if(user.users.length==0){
+      this.users=[{
+        id:0,firstName:"NA",lastName:"NA",jobTitle:"NA",phoneNumber:"NA"
+      }]
+    }
+    else{
+        this.users=user.users;
+    }
+  
+   
   }
 }

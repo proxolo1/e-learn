@@ -25,6 +25,7 @@ export class ApiService {
     return this.http.post(`${this.url}/api/add-course`,course,{headers:{"Authorization":`Bearer ${this.token.getToken()}`}})
   }
   enrollCourse(email:string,courseName:string){
+    console.log(email,courseName)
     return this.http.get(`${this.url}/api/enroll-course?email=${email}&course=${courseName}`,{headers:{"Authorization":`Bearer ${this.token.getToken()}`}})
   }
   viewCourse(courseName:string){

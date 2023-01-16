@@ -38,8 +38,20 @@ export class RegistrationComponent implements OnInit {
       phoneNumber:new FormControl('',[Validators.required,Validators.maxLength(10)]),
       jobTitle:new FormControl('',[Validators.required]),
       password:new FormControl('',[Validators.required]),
-      confirmPassword: new FormControl('', Validators.required)
+      confirmPassword: new FormControl('', [Validators.required])
     });
   }
- 
+
+  
+}
+
+export function passwordMatchValidator(form: FormGroup) {
+  const password =form.get('password')!.value;
+  const confirmPassword = form.get('confirmPassword')!.value;
+
+  if (password !== confirmPassword) {
+     form.get('confirmPassword')!.setErrors({ passwordMismatch: true });
+  } else {
+      form.get('confirmPassword')!.setErrors(null);
+  }
 }
