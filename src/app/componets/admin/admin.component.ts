@@ -1,6 +1,6 @@
 import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -32,10 +32,11 @@ export class AdminComponent implements OnInit {
       this.courses=res;
     })
     this.courseForm=new FormGroup({
-      name:new FormControl(""),
-      description:new FormControl(""),
-      trainer:new FormControl(""),
-      duration:new FormControl("")
+      name:new FormControl("",[Validators.required]),
+      description:new FormControl("",[Validators.required]),
+      trainer:new FormControl("",[Validators.required]),
+      duration:new FormControl("",[Validators.required]),
+      max_registrations:new FormControl("",[Validators.required])
     })
     }
     else{
@@ -59,11 +60,13 @@ export class AdminComponent implements OnInit {
      let description=<HTMLInputElement>document.getElementById("description")
      let duration=<HTMLInputElement>document.getElementById("duration")
      let trainer=<HTMLInputElement>document.getElementById("trainer");
+     let max_registrations=<HTMLInputElement>document.getElementById("max_registrations")
     //  update.style.display="block";
      name.value=this.updateTemp.name;
      description.value=this.updateTemp.description;
      trainer.value=this.updateTemp.trainer;
      duration.value=this.updateTemp.duration;
+     max_registrations.value=this.updateTemp.max_registrations;
     })
   }
   viewCourse(courseName:string){
@@ -88,7 +91,8 @@ export class AdminComponent implements OnInit {
     let description=<HTMLInputElement>document.getElementById("description")
     let duration=<HTMLInputElement>document.getElementById("duration")
     let trainer=<HTMLInputElement>document.getElementById("trainer");
-    this.api.updateCourse(name.value,{name:name.value,description:description.value,duration:duration.value,trainer:trainer.value}).subscribe(res=>{
+    let max_registrations=<HTMLInputElement>document.getElementById("max_registrations")
+    this.api.updateCourse(name.value,{name:name.value,description:description.value,duration:duration.value,trainer:trainer.value,max_registrations:max_registrations.value}).subscribe(res=>{
       console.log(res)
       alert("updated successfully")
       location.reload();

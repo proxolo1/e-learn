@@ -12,6 +12,7 @@
           <th scope="col">description</th>
           <th scope="col">duration</th>
           <th scope="col">trainer</th>
+          <th scope="col">max registrations</th>
           <th scope="col">action</th>
         </tr>
       </thead>
@@ -21,6 +22,7 @@
           <td>{{ course.description }}</td>
           <td>{{ course.duration }}</td>
           <td>{{ course.trainer }}</td>
+          <td>{{course.max_registrations}}</td>
           <td>
             <span  data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn" (click)="viewCourse(course.name)">view</span>
             <span data-bs-toggle="modal" data-bs-target="#exampleModal1"  class="btn" (click)="updateCourse(course.name)">edit</span><span class="btn"
@@ -56,11 +58,12 @@
           <input class="form-control m-3" type="text" placeholder="course description" formControlName="description" />
           <input class="form-control m-3" type="text" placeholder="course duration" formControlName="duration" />
           <input class="form-control m-3" type="text" name="" id="" placeholder="trainer" formControlName="trainer" />
+          <input class="form-control m-3" type="number" name="" id="" placeholder="max_registrations" formControlName="max_registrations" />
         </form>
       </div>
       <div class="modal-footer">
       
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addCourse()">
+        <button [disabled]="courseForm.invalid" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addCourse()">
           Save changes
         </button>
       </div>
@@ -70,32 +73,6 @@
 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="courseForm">
-          <input type="text" placeholder="course name" formControlName="name" />
-          <input type="text" placeholder="course description" formControlName="description" />
-          <input type="text" placeholder="course duration" formControlName="duration" />
-          <input type="text" name="" id="" placeholder="trainer" formControlName="trainer" />
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary" (click)="addCourse()">
-          Save changes
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -121,6 +98,10 @@
           <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course trainer </label></div>
           <div class="col-10"><input type="text" class="form-control" id="trainer"></div>
         </div>
+        <div class="row my-3">
+          <div class="col-2"> <label for="exampleInputEmail1" class="form-label">max registration </label></div>
+          <div class="col-10"><input type="text" class="form-control" id="max_registrations"></div>
+        </div>
       
       </div>
       <div class="modal-footer">
@@ -134,31 +115,7 @@
     </div>
   </div>
 </div>
-<div class="update">
-  <div class="row my-3">
-    <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course name </label></div>
-    <div class="col-10"><input type="text" class="form-control" id="name"></div>
-  </div>
-  <div class="row my-3">
-    <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course description </label></div>
-    <div class="col-10"><input type="text" class="form-control" id="description"></div>
-  </div>
-  <div class="row my-3">
-    <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course duration </label></div>
-    <div class="col-10"><input type="text" class="form-control" id="duration"></div>
-  </div>
-  <div class="row my-3">
-    <div class="col-2"> <label for="exampleInputEmail1" class="form-label">course trainer </label></div>
-    <div class="col-10"><input type="text" class="form-control" id="trainer"></div>
-  </div>
-  <div class="row my-3">
-    <button class="btn btn-info" (click)="saveUpdate()">save</button>
-  </div>
-  
 
-  <!-- <input type="text"> -->
-  <!-- <input type="text"> -->
-</div>
 
 
 

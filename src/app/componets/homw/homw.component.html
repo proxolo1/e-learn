@@ -111,7 +111,7 @@
             </div>
             <div class="card-body">
               <b class="card-title"> INSTRUCTOR </b>
-              <p class="card-text">
+              <p class="card-text fw-light">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Sapiente, ex?
               </p>
@@ -125,7 +125,7 @@
             </div>
             <div class="card-body">
               <b class="card-title"> ONLINE CLASSES </b>
-              <p class="card-text">
+              <p class="card-text fw-light">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta,
                 quos.
               </p>
@@ -139,7 +139,7 @@
             </div>
             <div class="card-body">
               <b class="card-title">GROUP PROJECTS</b>
-              <p class="card-text">
+              <p class="card-text fw-light">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Consectetur, quas?
               </p>
@@ -153,7 +153,7 @@
             </div>
             <div class="card-body">
               <b class="card-title"> BOOK LIBRARY </b>
-              <p class="card-text">
+              <p class="card-text fw-light">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
                 doloremque.
               </p>
@@ -205,18 +205,40 @@
         <span class="course-heading">POPULAR COURSES</span>
       </div>
       <div class="row">
-        <div class="col-md-4" *ngFor="let course of courses">
+        <div class="col-md-4 my-2" *ngFor="let course of courses">
           <div class="card">
-            <img src="" class="card-img-top" alt="..." />
             <div class="card-body">
-              <h5 class="card-title">{{ course.name }}</h5>
-              <p class="card-text">{{ course.description }}</p>
-              <button class="btn btn-sm btn-info" (click)="enrollCourse(course.name)">
-                enroll
-              </button>
+              <div class="row">
+
+                <h5 class="card-title text-center fw-bold text-uppercase">{{ course.name }}</h5>
+              </div>
+              <div class="row">
+
+                <p class="card-text fw-light text-wrap">{{ course.description }}</p>
+              </div>
+
+              <div class="row">
+
+                <small class="trainer">{{course.trainer}}</small>
+              </div>
+              <div class="row">
+                <code>{{course.duration}}</code>
+              </div>
             </div>
             <div class="card-footer">
-              <small class="text-muted">{{ course.no_of_registrations }}</small>
+              <div class="row">
+                <div class="col-8">
+                  
+                   <small class="text-muted">{{ course.no_of_registrations }}</small>
+                </div>
+                <div class="col-4">
+                     <button class="btn btn-success text-light" (click)="enrollCourse(course.name)">
+                  enroll
+                </button>
+                </div>
+             
+              </div>
+             
             </div>
           </div>
         </div>

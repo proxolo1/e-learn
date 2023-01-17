@@ -30,17 +30,26 @@ export class HomwComponent implements OnInit {
     this.isLogin=this.tokenService.getToken()
   }
   darkModeToggle(){
+    let nodes:any;
     let background=<HTMLDivElement>document.querySelector(".background");
     let main=<HTMLDivElement>document.querySelector(".main");
     let cards=document.querySelectorAll(".card")
+    
     if(!this.dark){
       background.style.backgroundColor="black";
       main.style.color="red";
-    
+    cards.forEach(node=>{
+      nodes=node;
+      nodes.style.backgroundColor="black";
+    })
     }
     else{
       background.style.backgroundColor="beige";
       main.style.color="black";
+      cards.forEach(node=>{
+        nodes=node;
+        nodes.style.backgroundColor="white";
+      })
     }
     this.dark=!this.dark;
 
