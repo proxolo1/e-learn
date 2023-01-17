@@ -48,8 +48,7 @@ export class AdminComponent implements OnInit {
   addCourse(){
     this.api.addCourse(this.courseForm.value).subscribe(res=>{
       console.log(res);
-      
-      location.reload();
+      location.reload();;
     })
   }
   updateCourse(courseName:string){

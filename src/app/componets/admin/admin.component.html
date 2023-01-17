@@ -5,13 +5,14 @@
   
   <div class="row">
 
-    <table class="table">
+    <table class="table bg-light text-center">
       <thead>
         <tr>
           <th scope="col">course name</th>
           <th scope="col">description</th>
           <th scope="col">duration</th>
           <th scope="col">trainer</th>
+          <th scope="col">number of registrations</th>
           <th scope="col">max registrations</th>
           <th scope="col">action</th>
         </tr>
@@ -22,10 +23,12 @@
           <td>{{ course.description }}</td>
           <td>{{ course.duration }}</td>
           <td>{{ course.trainer }}</td>
+          <td>{{course.no_of_registrations}}</td>
           <td>{{course.max_registrations}}</td>
           <td>
-            <span  data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn" (click)="viewCourse(course.name)">view</span>
-            <span data-bs-toggle="modal" data-bs-target="#exampleModal1"  class="btn" (click)="updateCourse(course.name)">edit</span><span class="btn"
+            <span   data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-info m-2" (click)="viewCourse(course.name)">view</span>
+            <span data-bs-toggle="modal" data-bs-target="#exampleModal1"  class="btn btn-secondary m-2" (click)="updateCourse(course.name)">edit</span>
+            <span class="btn btn-danger m-2"
               (click)="deleteCourse(course.name)">delete</span>
           </td>
         </tr>
@@ -156,7 +159,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

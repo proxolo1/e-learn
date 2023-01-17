@@ -55,9 +55,12 @@ export class HomwComponent implements OnInit {
 
   }
   enrollCourse(courseName:string){
+    let response:any;
     this.api.enrollCourse(JSON.parse(localStorage.getItem("user")||"").user.email,courseName).subscribe(res=>{
       console.log(res)
-      alert("enrolled successfully")
+      response=res;
+      alert(response['accessToken']);
+      location.reload();
     })
   }
   logOut(){
